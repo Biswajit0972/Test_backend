@@ -4,9 +4,10 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 const app = express();
 const corsOptions = {
-  origin: "https://backend-service-frontend.vercel.app",
+  origin: "http://127.0.0.1:5500/",
   credentials: true,
   // sameSite: 'strict',
+  samSite: "None"
 };
 
 app.use(cors(corsOptions));
