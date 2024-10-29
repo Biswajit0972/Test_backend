@@ -4,7 +4,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 const app = express();
 const corsOptions = {
-  origin: "http://127.0.0.1:5500/",
+  origin: "http://127.0.0.1:5500/front/index.html",
   credentials: true,
   // sameSite: 'strict',
   samSite: "None"
