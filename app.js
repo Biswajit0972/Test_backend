@@ -19,8 +19,9 @@ app.get("/", (req, res) => {
 });
 
 app.get("/cookie", (req, res) => {
+    
     const cookie = req.cookies?.token
-    res.status(200).send("Cookie set up or not")
+    res.status(200).send(cookie)
 })
 
 export { app };
