@@ -1,27 +1,34 @@
 import "dotenv/config";
 import express from "express";
 import cookieParser from "cookie-parser";
-
+import cors from "cors";
 const app = express();
+const corsOptions = {
+  origin: "https://backend-service-frontend.vercel.app",
+  credentials: true,
+  // sameSite: 'strict',
+};
 
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(cookieParser());
 
 app.get("/", (req, res) => {
-    // console.log(req);
-    res.status(200).cookie("token", "bsjaexnerbcgyweutivvchsgdftdgfvvhgzndgajwgaghsgh", {
-        httpOnly: true,
-        secure: true,
-        maxAge: 3600 * 1000 // maxAge in milliseconds (1 hour)
-    }).send("Set up your cookie");
-    
+  // console.log(req);
+  res
+    .status(200)
+    .cookie("token", "bsjaexnerbcgyweutivvchsgdftdgfvvhgzndgajwgaghsgh", {
+      httpOnly: true,
+      secure: true,
+      maxAge: 3600 * 1000, // maxAge in milliseconds (1 hour)
+    })
+    .send("Set up your cookie");
 });
 
 app.get("/cookie", (req, res) => {
-    
-    const cookie = req.cookies?.token
-    res.status(200).send(cookie)
-})
+  const cookie = req.cookies?.token;
+  res.status(200).send(cookie);
+});
 
 export { app };
